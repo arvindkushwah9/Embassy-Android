@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_news">
+
+    <fragment
+        android:id="@+id/nav_news"
+        android:name="com.example.amal.esa.ui.news.NewsFragment"
+        android:label="@string/menu_news"
+        tools:layout="@layout/fragment_news" >
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_services"
+        android:name="com.example.amal.esa.ui.services.ServicesFragment"
+        android:label="@string/menu_services"
+        tools:layout="@layout/fragment_services" />
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.amal.esa.ui.home.HomeFragment"
+        android:label="@string/menu_services"
+        tools:layout="@layout/fragment_home" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.amal.esa.ui.profile.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_contact_us"
+        android:name="com.example.amal.esa.ui.contactus.ContactUsFragment"
+        android:label="@string/menu_contact_us"
+        tools:layout="@layout/fragment_contactus" />
+
+    <fragment
+        android:id="@+id/nav_ad_market"
+        android:name="com.example.amal.esa.ui.admarket.AdMarketFragment"
+        android:label="@string/menu_ad_market"
+        tools:layout="@layout/fragment_ad_market" />
+
+    <fragment
+        android:id="@+id/nav_term"
+        android:name="com.example.amal.esa.ui.termcondition.TermConditionFragment"
+        android:label="@string/menu_term_conditions"
+        tools:layout="@layout/fragment_term_condition" />
+
+    <fragment
+        android:id="@+id/nav_tracking"
+        android:name="com.example.amal.esa.ui.tracking.TrackingFragment"
+        android:label="@string/menu_traking"
+        tools:layout="@layout/fragment_tracking" />
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.example.amal.esa.ui.contactus.ContactUsFragment"
+        android:label="@string/menu_contact_us"
+        tools:layout="@layout/fragment_contactus" />
+
+    <fragment
+        android:id="@+id/nav_notification"
+        android:name="com.example.amal.esa.ui.notification.NotificationFragment"
+        android:label="@string/menu_notification"
+        tools:layout="@layout/fragment_notification" />
+
+
+    <fragment
+        android:id="@+id/nav_faq"
+        android:name="com.example.amal.esa.ui.faq.FaqFragment"
+        android:label="@string/menu_faq"
+        tools:layout="@layout/fragment_faq" />
+
+
+  <!--  <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.example.amal.esa.ui.send.ContactUsFragment"
+        android:label="@string/menu_term_conditions"
+        tools:layout="@layout/fragment_contactus" />-->
+</navigation>
