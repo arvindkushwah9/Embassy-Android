@@ -9,6 +9,10 @@ import com.example.amal.esa.model.News;
 import com.example.amal.esa.model.RegiserResponse;
 import com.example.amal.esa.model.RegisterRequest;
 import com.example.amal.esa.ui.news.Movie;
+import com.example.amal.esa.ui.profile.GetProfile;
+import com.example.amal.esa.ui.profile.RequestUpdateProfile;
+import com.example.amal.esa.ui.profile.UpdateProfile;
+import com.example.amal.esa.ui.tracking.Tracking;
 
 import java.util.List;
 import java.util.Map;
@@ -19,10 +23,13 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 
@@ -94,10 +101,37 @@ public interface ApiInterface {
     @POST("api/v1/accounts/register/")
     Call<RegiserResponse> register(@Body RegisterRequest loginRequest);
 
-    @GET("/api/v1/news")
+    @GET("api/v1/news")
     Call<Movie> getNews(
             @HeaderMap Map<String, String> headers
     );
+
+    @GET("api/v1/get_profile")
+    Call<GetProfile> getProfile(
+            @HeaderMap Map<String, String> headers
+    );
+
+
+    @GET("api/v1/tracking")
+    Call<Tracking> getTrakingList(
+            @HeaderMap Map<String, String> headers
+    );
+   /* @Headers("Authorization: Token a34a06885f01188575fbb44606173f42c00abf4a")
+    @PATCH("api/v1/accounts/profile/")
+    Call<UpdateProfile> updateProfile(RequestUpdateProfile requestUpdateProfile);*/
+
+
+   // @Headers("Token a34a06885f01188575fbb44606173f42c00abf4a")
+    @PATCH("api/v1/accounts/profile/")
+    Call<UpdateProfile> updateProfile(@HeaderMap Map<String, String> headers, @Body RequestUpdateProfile requestUpdateProfile);
+
+
+
+    //@Headers("api-key: Y2xpeEFwaVBlbm55RHJvchiuhv76")
+    @Multipart
+    @POST("api/v1/documents/create_document/")
+    Call<ResponseBody> postImage(@HeaderMap Map<String, String> map1, @Part MultipartBody.Part file, @PartMap() Map<String, RequestBody> partMap);
+
 
 /*
     @Headers("api-key: NitintestKeySunilPankaj")
@@ -209,10 +243,6 @@ public interface ApiInterface {
     Call<GetMandateResponse> getresidentialList(@Body GetMandateRequest getMandateRequest);
 */
 
-    @Headers("api-key: Y2xpeEFwaVBlbm55RHJvchiuhv76")
-    @Multipart
-    @POST("uploadMandate")
-    Call<ResponseBody> postImage(@Part MultipartBody.Part file, @PartMap() Map<String, RequestBody> partMap);
 
     /*@Headers("api-key: Y2xpeEFwaVBlbm55RHJvchiuhv76")
     @Multipart

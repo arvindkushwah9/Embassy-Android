@@ -39,6 +39,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/pass_reneval"
             android:gravity="center"
             android:layout_weight="1"
             android:layout_width="0dp"

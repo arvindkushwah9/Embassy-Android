@@ -94,6 +94,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:visibility="gone"
                 android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -114,6 +115,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:visibility="gone"
                 android:id="@+id/retype_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -134,7 +136,7 @@
 
             <Button
                 android:background="@color/buttonBackground"
-                android:id="@+id/sign_up"
+                android:id="@+id/save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
