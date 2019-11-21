@@ -9,6 +9,7 @@ import com.example.amal.esa.model.News;
 import com.example.amal.esa.model.RegiserResponse;
 import com.example.amal.esa.model.RegisterRequest;
 import com.example.amal.esa.ui.news.Movie;
+import com.example.amal.esa.ui.notification.GetNotification;
 import com.example.amal.esa.ui.profile.GetProfile;
 import com.example.amal.esa.ui.profile.RequestUpdateProfile;
 import com.example.amal.esa.ui.profile.UpdateProfile;
@@ -132,6 +133,12 @@ public interface ApiInterface {
     @POST("api/v1/documents/create_document/")
     Call<ResponseBody> postImage(@HeaderMap Map<String, String> map1, @Part MultipartBody.Part file, @PartMap() Map<String, RequestBody> partMap);
 
+
+
+    @GET("api/v1/notifications")
+    Call<GetNotification> getNotification(
+            @HeaderMap Map<String, String> headers
+    );
 
 /*
     @Headers("api-key: NitintestKeySunilPankaj")
