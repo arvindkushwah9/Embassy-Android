@@ -92,7 +92,8 @@ public class NotificationFragment extends Fragment {
                 if (response.isSuccessful()) {
 
                     GetNotification notification = response.body();
-                    NotificationAdapter mAdapter = new NotificationAdapter(getActivity(), notification.getNotification);
+                    System.out.println("========="+notification.notifications);
+                    NotificationAdapter mAdapter = new NotificationAdapter(getActivity(), notification.notifications);
                     recyclerView.setAdapter(mAdapter);
                 } else {
                     try {

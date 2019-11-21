@@ -7,4 +7,12 @@ import java.util.ArrayList;
 public class Notification {
     public Integer id;
     public String title;
+
+    @Override
+    public String toString() {
+        return "Notification{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }
