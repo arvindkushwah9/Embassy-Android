@@ -29,6 +29,7 @@
     <item android:title="">
         <menu>
             <item
+                android:visible="false"
                 android:id="@+id/nav_term"
                 android:title="@string/menu_term_conditions" />
             <item

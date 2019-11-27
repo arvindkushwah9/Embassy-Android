@@ -8,8 +8,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.amal.esa.ui.news.ViewNewsFragment;
 import com.example.amal.esa.ui.notification.NotificationFragment;
 import com.example.amal.esa.ui.passrenewal.PassRenewalFragment;
+import com.example.amal.esa.ui.services.AddServiceFragment;
 
 public class NotificationActivity extends AppCompatActivity {
 
@@ -18,9 +20,32 @@ public class NotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
-        Fragment fragment = new PassRenewalFragment();
+        Intent intent = getIntent();
+        int key = intent.getIntExtra("key", 0);
+        switch (key) {
+            case 0:
+                Fragment fragment = new PassRenewalFragment();
+                replaceFragment(fragment);
+                break;
 
-        replaceFragment(fragment);
+            case 1:
+                String title=intent.getStringExtra("title");
+                String description=intent.getStringExtra("description");
+
+                Bundle bundle=new Bundle();
+                Fragment fragment1 = new ViewNewsFragment();
+                bundle.putString("title",title);
+                bundle.putString("description",description);
+                fragment1.setArguments(bundle);
+                replaceFragment(fragment1);
+                break;
+
+            case 2:
+                Fragment fragment2 = new AddServiceFragment();
+                replaceFragment(fragment2);
+                break;
+        }
+
     }
 
     public void replaceFragment(Fragment fragment) {

@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText Password;
     private Button Login;
     private TextView Invalid;
-    private TextView mSignUp;
+    private TextView mSignUp,mForgotPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +58,14 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        mForgotPassword=findViewById(R.id.textView);
+        mForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
 
 
         Login.setOnClickListener(new View.OnClickListener() {

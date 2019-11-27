@@ -1,6 +1,7 @@
 package com.example.amal.esa.ui.news;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +16,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.amal.esa.NotificationActivity;
 import com.example.amal.esa.R;
+import com.example.amal.esa.interfaces.CustomItemClickListener;
 import com.example.amal.esa.network.ApiClient;
 import com.example.amal.esa.network.ApiInterface;
 import com.example.amal.esa.utility.SharedPrefManager;
@@ -29,7 +32,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NewsFragment extends Fragment {
+public class NewsFragment extends Fragment  {
 
     private NewsViewModel toolsViewModel;
     RecyclerView recyclerView;
@@ -89,9 +92,19 @@ public class NewsFragment extends Fragment {
 
 
                  if(response.isSuccessful()) {
-                     Movie movieList = response.body();
+                     final Movie movieList = response.body();
 
-                     MoviesAdapter mAdapter = new MoviesAdapter(getActivity(), movieList.posts);
+                     MoviesAdapter mAdapter = new MoviesAdapter(getActivity(), movieList.posts, new CustomItemClickListener() {
+                         @Override
+                         public void onItemClick(View v, int position) {
+                             //Toast.makeText(v.getContext(),""+position,Toast.LENGTH_SHORT).show();
+                             Intent intent=new Intent(getActivity(), NotificationActivity.class);
+                             intent.putExtra("title",movieList.posts.get(position).title);
+                             intent.putExtra("description",movieList.posts.get(position).description);
+                             intent.putExtra("key",1);
+                             startActivity(intent);
+                         }
+                     });
                      recyclerView.setAdapter(mAdapter);
                      // System.out.println("===========pass========" + mLoginObject);
                  }
@@ -118,5 +131,6 @@ public class NewsFragment extends Fragment {
             }
         });
     }
+
 
 }

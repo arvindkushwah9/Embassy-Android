@@ -1,7 +1,6 @@
-package com.example.amal.esa.ui.news;
+package com.example.amal.esa.ui.admarket;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,28 +11,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.amal.esa.R;
 import com.example.amal.esa.interfaces.CustomItemClickListener;
+import com.example.amal.esa.ui.notification.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.http.POST;
+public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MyViewHolder> {
 
-public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHolder> {
-
-    private List<Post> moviesList;
+    private List<AdMarket> moviesList;
     private Context mContext;
     CustomItemClickListener listener;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, year, descripiton;
+        public TextView title,description;
         public ImageView imageView;
 
         public MyViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.card_title);
-            descripiton = (TextView) view.findViewById(R.id.card_subtitle);
-            //year = (TextView) view.findViewById(R.id.year);
-            imageView = (ImageView) view.findViewById(R.id.image);
+            title = (TextView) view.findViewById(R.id.title);
+            description=(TextView) view.findViewById(R.id.description);
+
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -45,7 +41,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
         }
     }
 
-    public MoviesAdapter(Context mContext, List<Post> moviesList,CustomItemClickListener listener) {
+    public MarketAdapter(Context mContext, List<AdMarket> moviesList, CustomItemClickListener listener) {
         this.moviesList = moviesList;
         this.mContext = mContext;
         this.listener = listener;
@@ -54,7 +50,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_news1, parent, false);
+                .inflate(R.layout.row_market, parent, false);
         final MyViewHolder mViewHolder = new MyViewHolder(itemView);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,10 +63,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Post movie = moviesList.get(position);
+        AdMarket movie = moviesList.get(position);
         holder.title.setText(movie.title);
-        holder.descripiton.setText(movie.description);
-      //  Glide.with(mContext).load(movie.getFlag()).into(holder.imageView);
+        holder.description.setText(movie.description);
     }
 
     @Override

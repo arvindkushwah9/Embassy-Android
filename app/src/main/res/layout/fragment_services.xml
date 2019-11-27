@@ -3,24 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     android:layout_gravity="center"
+    android:orientation="vertical"
     tools:context="com.example.amal.esa.ui.services.ServicesFragment">
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/r1"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <LinearLayout
-        android:layout_margin="10dp"
-        android:weightSum="2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="2">
 
         <LinearLayout
-            android:gravity="center"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
@@ -29,21 +36,21 @@
                 android:src="@drawable/s" />
 
             <TextView
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="15sp"
-                android:padding="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Insurance" />
+                android:padding="5dp"
+                android:text="Insurance"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/pass_reneval"
-            android:gravity="center"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
@@ -52,30 +59,31 @@
                 android:src="@drawable/pasprt" />
 
             <TextView
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="15sp"
-                android:padding="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pass Renewal" />
+                android:padding="5dp"
+                android:text="Pass Renewal"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_margin="10dp"
-        android:weightSum="2"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <LinearLayout
-            android:gravity="center"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
@@ -84,20 +92,20 @@
                 android:src="@drawable/pasprt" />
 
             <TextView
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="15sp"
-                android:padding="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Service" />
+                android:padding="5dp"
+                android:text="Add Service"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
-            android:gravity="center"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
@@ -106,23 +114,22 @@
                 android:src="@drawable/visa" />
 
             <TextView
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="15sp"
-                android:padding="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Social Visa" />
+                android:padding="5dp"
+                android:text="Social Visa"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
 
-
     <TextView
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello" />
+        android:text="Hello"
+        android:visibility="gone" />
 
 
 </LinearLayout>

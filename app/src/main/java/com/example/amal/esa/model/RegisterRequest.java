@@ -7,6 +7,8 @@ public class RegisterRequest {
     public String email;
     public String password;
     public String password_confirm;
+    public String passport_number;
+    public String phone_number;
 
     @Override
     public String toString() {

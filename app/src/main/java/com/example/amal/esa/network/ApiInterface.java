@@ -8,11 +8,14 @@ import com.example.amal.esa.model.LoginResponse;
 import com.example.amal.esa.model.News;
 import com.example.amal.esa.model.RegiserResponse;
 import com.example.amal.esa.model.RegisterRequest;
+import com.example.amal.esa.ui.admarket.AdMarket;
 import com.example.amal.esa.ui.news.Movie;
 import com.example.amal.esa.ui.notification.GetNotification;
+import com.example.amal.esa.ui.notification.Service;
 import com.example.amal.esa.ui.profile.GetProfile;
 import com.example.amal.esa.ui.profile.RequestUpdateProfile;
 import com.example.amal.esa.ui.profile.UpdateProfile;
+import com.example.amal.esa.ui.services.AddService;
 import com.example.amal.esa.ui.tracking.Tracking;
 
 import java.util.List;
@@ -140,6 +143,20 @@ public interface ApiInterface {
             @HeaderMap Map<String, String> headers
     );
 
+    @GET("api/v1/services")
+    Call<List<Service>> getServices(
+            @HeaderMap Map<String, String> headers
+    );
+
+
+
+    @POST("api/v1/services/create_service/")
+    Call<LoginResponse> postService(@Body AddService loginRequest ,@HeaderMap Map<String, String> headers);
+
+
+    @GET("api/v1/ads")
+    Call<List<AdMarket>> getAdMarket(
+            @HeaderMap Map<String, String> headers);
 /*
     @Headers("api-key: NitintestKeySunilPankaj")
     @POST("user/signUp")

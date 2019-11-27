@@ -54,8 +54,10 @@ public class SignUpActivity extends AppCompatActivity {
         final TextInputEditText email = (TextInputEditText) findViewById(R.id.email);
         final TextInputEditText password = (TextInputEditText) findViewById(R.id.password);
         final TextInputEditText confirm_password = (TextInputEditText) findViewById(R.id.confirm_password);
+        final TextInputEditText passport_number = (TextInputEditText) findViewById(R.id.passport_number);
+        final TextInputEditText phone_number = (TextInputEditText) findViewById(R.id.phone_number);
 
-       TextView mSignIn=(TextView)findViewById(R.id.sign_in);
+        TextView mSignIn=(TextView)findViewById(R.id.sign_in);
         mSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,8 +77,15 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Please Enter First name", Toast.LENGTH_SHORT).show();
                 } else if (last_name.getText().toString().equals("")) {
                     Toast.makeText(SignUpActivity.this, "Please Enter Last name", Toast.LENGTH_SHORT).show();
-                } else if (email.getText().toString().equals("")) {
-                    Toast.makeText(SignUpActivity.this, "Please Enter Emai;", Toast.LENGTH_SHORT).show();
+                }
+                else if (passport_number.getText().toString().equals("")) {
+                    Toast.makeText(SignUpActivity.this, "Please Enter Passport Number;", Toast.LENGTH_SHORT).show();
+                }
+                else if (phone_number.getText().toString().equals("")) {
+                    Toast.makeText(SignUpActivity.this, "Please Enter Phone Number;", Toast.LENGTH_SHORT).show();
+                }
+                else if (email.getText().toString().equals("")) {
+                    Toast.makeText(SignUpActivity.this, "Please Enter Email", Toast.LENGTH_SHORT).show();
                 } else if (password.getText().toString().equals("")) {
                     Toast.makeText(SignUpActivity.this, "Please Enter Password", Toast.LENGTH_SHORT).show();
                 } else if (confirm_password.getText().toString().equals("")) {
@@ -88,7 +97,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                     processRegister(name.getText().toString(), first_name.getText().toString(), last_name.getText().toString(),
                             email.getText().toString(),
-                            password.getText().toString());
+                            password.getText().toString(),passport_number.getText().toString(),phone_number.getText().toString());
 
                 }
             }
@@ -97,7 +106,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
 
-    private void processRegister(String userName, String firstName, String lastName, String email, String password) {
+    private void processRegister(String userName, String firstName, String lastName, String email, String password,String passportNumber,String phoneNumber) {
 
         final ProgressDialog progressDialog = new ProgressDialog(SignUpActivity.this, R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
@@ -111,6 +120,8 @@ public class SignUpActivity extends AppCompatActivity {
         loginRequest.email = email;
         loginRequest.password = password;
         loginRequest.password_confirm = password;
+        loginRequest.passport_number = passportNumber;
+        loginRequest.phone_number = phoneNumber;
         System.out.println("====login request====" + loginRequest);
 
 
@@ -139,6 +150,7 @@ public class SignUpActivity extends AppCompatActivity {
                     mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(mIntent);
                     finish();
+                    Toast.makeText(SignUpActivity.this, "You have signed up successfully", Toast.LENGTH_SHORT).show();
                     // } else {
                     //  Toast.makeText(LoginActivity.this, mLoginObject.StatusDesc, Toast.LENGTH_SHORT).show();
                     // }
