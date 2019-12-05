@@ -128,6 +128,7 @@ public class ServicesFragment extends Fragment {
                         public void onItemClick(View v, int position) {
 
                             String title= servicesList.get(position).title;
+                            System.out.println("==title====="+title);
 
                             switch (title){
 
@@ -138,7 +139,7 @@ public class ServicesFragment extends Fragment {
 
                                     break;
 
-                                case"Pass Renewal":
+                                case"Pass  Renewal":
                                     Intent intent1=new Intent(getActivity(),NotificationActivity.class);
                                     intent1.putExtra("key",0);
                                     startActivity(intent1);
