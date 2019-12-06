@@ -62,7 +62,8 @@ public class LoginActivity extends AppCompatActivity {
         mForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -138,11 +139,11 @@ public class LoginActivity extends AppCompatActivity {
                         mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(mIntent);
                         finish();
-                   // } else {
-                      //  Toast.makeText(LoginActivity.this, mLoginObject.StatusDesc, Toast.LENGTH_SHORT).show();
-                   // }
+
 
                 } else {
+                    Toast.makeText(LoginActivity.this, "“Please check your username\n" + "and password”", Toast.LENGTH_SHORT).show();
+
                     Log.e("unSuccess", new Gson().toJson(response.errorBody()));
                     // Toast.makeText(mContext, getResources().getString(R.string.invalid_user_name_password), Toast.LENGTH_SHORT).show();
                 }

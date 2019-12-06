@@ -1,14 +1,19 @@
 package com.example.amal.esa;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.example.amal.esa.network.ApiClient;
+import com.example.amal.esa.network.ApiInterface;
 import com.example.amal.esa.ui.notification.NotificationFragment;
+import com.example.amal.esa.ui.profile.GetProfile;
 import com.example.amal.esa.utility.SharedPrefManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -29,6 +34,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Toast;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -36,6 +50,7 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     DrawerLayout drawerLayout;
     NavController navController;
     NavigationView navigationView;
+    public static boolean isSuperuser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +83,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         navigationView.setNavigationItemSelectedListener(this);
+
+        getProfileData();
     }
 
     @Override
@@ -188,4 +205,63 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
+
+
+    private void getProfileData() {
+
+        final ProgressDialog progressDialog = new ProgressDialog(DashboardActivity.this, R.style.AppTheme_Dark_Dialog);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Authenticating...");
+        progressDialog.show();
+
+        SharedPrefManager sharedPrefManager = new SharedPrefManager();
+        String token = sharedPrefManager.getUserDetail(DashboardActivity.this).token;
+        System.out.println("=====token=====" + token);
+        Map<String, String> map = new HashMap<>();
+        map.put("Authorization", "Token " + token);
+
+        System.out.println("==========" + map);
+
+        //  mLoding_Spinner.setVisibility(View.VISIBLE);
+        ApiInterface mApiService = ApiClient.getInterfaceService(DashboardActivity.this);
+        Call<GetProfile> mService = mApiService.getProfile(map);
+        mService.enqueue(new Callback<GetProfile>() {
+            @Override
+            public void onResponse(Call<GetProfile> call, Response<GetProfile> response) {
+                progressDialog.dismiss();
+                // mLoding_Spinner.setVisibility(View.GONE);
+
+
+                if (response.isSuccessful()) {
+
+                    GetProfile getProfile = response.body();
+
+                    isSuperuser=getProfile.profile.is_superuser;
+                    System.out.println("======is active========"+getProfile.profile.is_superuser);
+
+                } else {
+                    try {
+                        System.out.println("============" + response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<GetProfile> call, Throwable t) {
+                String message = t.getMessage();
+                progressDialog.dismiss();
+                Log.d("failure", message);
+                // System.out.println("===========fail========" + message);
+                call.cancel();
+                //mLoding_Spinner.setVisibility(View.GONE);
+                Toast.makeText(DashboardActivity.this, message, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
 }

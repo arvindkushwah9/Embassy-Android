@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.amal.esa.DashboardActivity;
 import com.example.amal.esa.NotificationActivity;
 import com.example.amal.esa.R;
 import com.example.amal.esa.interfaces.CustomItemClickListener;
@@ -116,11 +117,15 @@ public class ServicesFragment extends Fragment {
                     final List<Service> servicesList = response.body();
                     System.out.println("===Abc======" + servicesList);
 
-                    List<Service> list = new ArrayList<>();
-                    Service service = new Service();
-                    service.title = "Add Service";
-                    list.add(service);
-                    servicesList.addAll(list);
+                    if(DashboardActivity.isSuperuser){
+                        List<Service> list = new ArrayList<>();
+                        Service service = new Service();
+                        service.title = "Add Service";
+                        list.add(service);
+                        servicesList.addAll(list);
+
+                    }
+
 
 
                     ServiceAdapter mAdapter = new ServiceAdapter(getActivity(), servicesList, new CustomItemClickListener() {
