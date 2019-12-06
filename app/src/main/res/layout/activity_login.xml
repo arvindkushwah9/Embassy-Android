@@ -23,6 +23,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Password" />
 
     <EditText
+        app:passwordToggleEnabled="true"
         android:id="@+id/Password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

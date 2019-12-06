@@ -43,7 +43,7 @@ public class AddServiceFragment extends Fragment {
     private AddViewModel mViewModel;
 
     private Button mAddService;
-    private TextInputEditText mTitle,mDescription;
+    private TextInputEditText mTitle,mDescription,mOptional;
     public static AddServiceFragment newInstance() {
         return new AddServiceFragment();
     }
@@ -56,6 +56,7 @@ public class AddServiceFragment extends Fragment {
         mTitle = (TextInputEditText) rootview.findViewById(R.id.title);
         mDescription = (TextInputEditText) rootview.findViewById(R.id.description);
         mAddService=(Button)rootview.findViewById(R.id.add_service);
+        mOptional = (TextInputEditText) rootview.findViewById(R.id.optional);
         mAddService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,6 +98,8 @@ public class AddServiceFragment extends Fragment {
         AddService loginRequest = new AddService();
         loginRequest.title = title;
         loginRequest.description = description;
+        loginRequest.optional=mOptional.getText().toString();
+
 
         SharedPrefManager sharedPrefManager1 = new SharedPrefManager();
         String token = sharedPrefManager1.getUserDetail(getActivity()).token;
