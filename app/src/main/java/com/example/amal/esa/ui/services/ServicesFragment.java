@@ -150,6 +150,13 @@ public class ServicesFragment extends Fragment {
                                     startActivity(intent1);
 
                                     break;
+
+                                case"Pass Renewal":
+                                    Intent intent2=new Intent(getActivity(),NotificationActivity.class);
+                                    intent2.putExtra("key",0);
+                                    startActivity(intent2);
+
+                                    break;
                             }
 
                         }

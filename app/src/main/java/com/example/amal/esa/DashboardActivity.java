@@ -180,6 +180,8 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 finish();
                 SharedPrefManager sharedPrefManager=new SharedPrefManager();
                 sharedPrefManager.logOut(DashboardActivity.this);
+
+               // System.out.println("====token==="+sharedPrefManager.getUserDetail(DashboardActivity.this).token);
                 break;
 
           /*  case R.id.third:
