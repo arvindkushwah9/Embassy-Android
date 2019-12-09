@@ -31,11 +31,12 @@ public class NotificationActivity extends AppCompatActivity {
             case 1:
                 String title=intent.getStringExtra("title");
                 String description=intent.getStringExtra("description");
-
+                String image=intent.getStringExtra("image");
                 Bundle bundle=new Bundle();
                 Fragment fragment1 = new ViewNewsFragment();
                 bundle.putString("title",title);
                 bundle.putString("description",description);
+                bundle.putString("image",image);
                 fragment1.setArguments(bundle);
                 replaceFragment(fragment1);
                 break;

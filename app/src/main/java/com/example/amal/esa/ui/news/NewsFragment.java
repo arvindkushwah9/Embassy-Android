@@ -93,6 +93,7 @@ public class NewsFragment extends Fragment  {
 
                  if(response.isSuccessful()) {
                      final Movie movieList = response.body();
+                     System.out.println("===========movieList========" + movieList);
 
                      MoviesAdapter mAdapter = new MoviesAdapter(getActivity(), movieList.posts, new CustomItemClickListener() {
                          @Override
@@ -101,6 +102,7 @@ public class NewsFragment extends Fragment  {
                              Intent intent=new Intent(getActivity(), NotificationActivity.class);
                              intent.putExtra("title",movieList.posts.get(position).title);
                              intent.putExtra("description",movieList.posts.get(position).description);
+                             intent.putExtra("image",movieList.posts.get(position).image);
                              intent.putExtra("key",1);
                              startActivity(intent);
                          }

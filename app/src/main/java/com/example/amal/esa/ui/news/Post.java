@@ -9,4 +9,15 @@ public String image;
 public String pubDate;
 public String updateDate;
 
+    @Override
+    public String toString() {
+        return "Post{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", content='" + content + '\'' +
+                ", image='" + image + '\'' +
+                ", pubDate='" + pubDate + '\'' +
+                ", updateDate='" + updateDate + '\'' +
+                '}';
+    }
 }

@@ -11,8 +11,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.amal.esa.R;
 
 
@@ -31,11 +33,21 @@ public class ViewNewsFragment extends Fragment {
 
         TextView tTitle = (TextView) rootView.findViewById(R.id.title);
         TextView dDecription = (TextView) rootView.findViewById(R.id.description);
+        ImageView image1 = (ImageView) rootView.findViewById(R.id.image);
 
         String title = getArguments().getString("title");
         String description = getArguments().getString("description");
+        String image = getArguments().getString("image");
+
+
         tTitle.setText(title);
         dDecription.setText(description);
+
+        Glide
+                .with(getActivity()) // replace with 'this' if it's in activity
+                .load(image)
+                .error(R.drawable.news_demo)
+                .into(image1);
 
         return rootView;
     }

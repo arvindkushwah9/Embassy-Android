@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.amal.esa.R;
 import com.example.amal.esa.interfaces.CustomItemClickListener;
 import com.example.amal.esa.ui.news.Post;
@@ -29,7 +30,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
-
+            imageView=(ImageView)view.findViewById(R.id.s1);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -58,6 +59,8 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
                 listener.onItemClick(v, mViewHolder.getPosition());
             }
         });
+
+
         return mViewHolder;
     }
 
@@ -65,6 +68,12 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Service movie = moviesList.get(position);
         holder.title.setText(movie.title);
+
+        Glide
+                .with(mContext) // replace with 'this' if it's in activity
+                .load(movie.image)
+                .error(R.drawable.news_demo)
+                .into(holder.imageView);
 
     }
 

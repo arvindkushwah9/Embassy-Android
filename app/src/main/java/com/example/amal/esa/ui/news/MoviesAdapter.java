@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.amal.esa.R;
 import com.example.amal.esa.interfaces.CustomItemClickListener;
 
@@ -33,7 +34,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
             title = (TextView) view.findViewById(R.id.card_title);
             descripiton = (TextView) view.findViewById(R.id.card_subtitle);
             //year = (TextView) view.findViewById(R.id.year);
-            imageView = (ImageView) view.findViewById(R.id.image);
+            imageView = (ImageView) view.findViewById(R.id.imageView);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -70,6 +71,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
         Post movie = moviesList.get(position);
         holder.title.setText(movie.title);
         holder.descripiton.setText(movie.description);
+        Glide
+                .with(mContext) // replace with 'this' if it's in activity
+                .load(movie.image)
+                .error(R.drawable.news_demo)
+                .into(holder.imageView);
       //  Glide.with(mContext).load(movie.getFlag()).into(holder.imageView);
     }
 
