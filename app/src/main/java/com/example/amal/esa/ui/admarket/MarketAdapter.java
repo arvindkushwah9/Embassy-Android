@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.amal.esa.R;
 import com.example.amal.esa.interfaces.CustomItemClickListener;
 import com.example.amal.esa.ui.notification.Service;
@@ -29,6 +30,7 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MyViewHold
             super(view);
             title = (TextView) view.findViewById(R.id.title);
             description=(TextView) view.findViewById(R.id.description);
+            imageView=(ImageView) view.findViewById(R.id.s2);
 
 
             view.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +68,12 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.MyViewHold
         AdMarket movie = moviesList.get(position);
         holder.title.setText(movie.title);
         holder.description.setText(movie.description);
+
+        Glide
+                .with(mContext) // replace with 'this' if it's in activity
+                .load(movie.image)
+                .error(R.drawable.news_demo)
+                .into(holder.imageView);
     }
 
     @Override
